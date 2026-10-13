@@ -1,17 +1,18 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-    # Understand: given an array -> [1,2,3] int values
-    #             given an int target
-    # Return two int indices of the int values that make up target
-    # cannot use the same element twice, aka int value.
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        """
+    we have our nums and target parameters,
 
-#1   pass through the entire array
+    our goal is to return the indices that make up
 
-#2   brute force method - > subtract each value by the target
-#3   target ex: 7  [1,2,3,4,5,6,7] - >  --  1 > [0] 1-7 = 6 + [0]  1 = 7 target return [0] and [5]
-    #3 if the subtracted value by the target: ex 6 + each value in the array equals target return indices
+    our target, which are two numbers from the given array when summed == to target'
 
+    we may assume there is exactly one solution, no repeating answwers. Any order return
+        """
+        dictionary = {}
         for i in range(len(nums)):
-            for j in range(i + 1,len(nums)):
-                if nums[i] + nums[j] == target:
-                    return i, j
+            complement = target - nums[i]
+
+            if complement in dictionary:
+                return dictionary[complement], i
+            dictionary[nums[i]] = i
